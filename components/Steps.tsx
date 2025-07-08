@@ -62,9 +62,15 @@ const Steps = () => {
                                 Use commas to separate words
                             </div>
                             <div className="flex gap-2 mt-1">
-                                <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">Price</span>
-                                <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">Link</span>
-                                <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">Shop</span>
+                                <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">
+                                    Price
+                                </span>
+                                <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">
+                                    Link
+                                </span>
+                                <span className="bg-gray-100 px-2 py-0.5 rounded text-xs">
+                                    Shop
+                                </span>
                             </div>
                         </div>
                     </div>
