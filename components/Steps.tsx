@@ -16,6 +16,10 @@ type StepsProps = {
     thumbnails: string[];
     selectedImageIndex: number;
     setSelectedImageIndex: (idx: number) => void;
+    openingDM: string;
+    setOpeningDM: (v: string) => void;
+    dmWithLink: string;
+    setDmWithLink: (v: string) => void;
 };
 
 const Steps: React.FC<StepsProps> = ({
@@ -28,13 +32,11 @@ const Steps: React.FC<StepsProps> = ({
     thumbnails,
     selectedImageIndex,
     setSelectedImageIndex,
+    openingDM,
+    setOpeningDM,
+    dmWithLink,
+    setDmWithLink,
 }) => {
-    // State for DM textareas
-    const [openingDM, setOpeningDM] = useState(
-        "Hey there! I'm so happy you're here, thanks so much for your interest 😊\n\nClick below and I’ll send you the link in just a sec ✨",
-    );
-    const [dmWithLink, setDmWithLink] = useState('Hey');
-
     return (
         <div className="flex flex-col w-full h-full max-w-md p-6 gap-8 bg-white rounded-lg shadow">
             {/* Step 1: Select Post */}

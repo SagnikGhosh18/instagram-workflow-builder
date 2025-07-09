@@ -16,6 +16,10 @@ export default function Home() {
     const [dmEnabled, setDmEnabled] = useState(false);
     const [thumbnails] = useState<string[]>(DEFAULT_THUMBNAILS);
     const [selectedImageIndex, setSelectedImageIndex] = useState<number>(0);
+    const [openingDM, setOpeningDM] = useState(
+        "Hey there! I'm so happy you're here, thanks so much for your interest 😊\n\nClick below and I’ll send you the link in just a sec ✨",
+    );
+    const [dmWithLink, setDmWithLink] = useState('Hey');
 
     // Derive previewTab from form state
     let previewTab: 'post' | 'comments' | 'dm' = 'post';
@@ -42,6 +46,10 @@ export default function Home() {
                             thumbnails={thumbnails}
                             selectedImageIndex={selectedImageIndex}
                             setSelectedImageIndex={setSelectedImageIndex}
+                            openingDM={openingDM}
+                            setOpeningDM={setOpeningDM}
+                            dmWithLink={dmWithLink}
+                            setDmWithLink={setDmWithLink}
                         />
                     </div>
                 </div>
@@ -50,6 +58,8 @@ export default function Home() {
                         tab={previewTab}
                         thumbnails={thumbnails}
                         selectedImageIndex={selectedImageIndex}
+                        openingDM={openingDM}
+                        dmWithLink={dmWithLink}
                     />
                     <PreviewTabs value={previewTab} onChange={() => {}} />
                 </div>
