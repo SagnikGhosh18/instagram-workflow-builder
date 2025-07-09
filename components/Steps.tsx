@@ -80,7 +80,7 @@ const Steps: React.FC<StepsProps> = ({
                 <>
                     {/* Step 2: Comment Has Word */}
                     <div>
-                        <h3 className="text-sm font-medium mb-1">And this comment has</h3>
+                        <h3 className="text-lg font-semibold mb-2">And this comment has</h3>
                         <RadioGroup
                             value={commentType ?? ''}
                             onValueChange={setCommentType}
@@ -117,59 +117,50 @@ const Steps: React.FC<StepsProps> = ({
                             </div>
                         </RadioGroup>
                     </div>
-
-                    {/* Step 3: Perform Action - Enhanced UI */}
-                    {!!commentType && (
-                        <div>
-                            <h3 className="text-lg font-semibold mb-3">They will get</h3>
-                            {/* Opening DM Card */}
-                            <div className="bg-gray-50 border rounded-xl p-4 flex flex-col gap-3 mb-4">
-                                <div className="flex items-center justify-between">
-                                    <span className="font-medium">an opening DM</span>
-                                    <Switch
-                                        checked={dmEnabled}
-                                        onCheckedChange={setDmEnabled}
-                                        id="dm-switch"
-                                    />
-                                </div>
-                                <textarea
-                                    className="w-full rounded-md border border-gray-200 bg-white p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
-                                    rows={3}
-                                    value={openingDM}
-                                    onChange={(e) => setOpeningDM(e.target.value)}
-                                />
-                                <Input
-                                    className="w-full text-sm"
-                                    value="Send me the link"
-                                    readOnly
-                                />
-                                <a
-                                    href="#"
-                                    className="text-xs text-blue-600 flex items-center gap-1 mt-1 hover:underline"
-                                >
-                                    <span className="text-base">ℹ️</span> Why does an Opening DM
-                                    matter?
-                                </a>
-                            </div>
-                            {/* DM with the link Card */}
-                            <div className="bg-gray-50 border rounded-xl p-4 flex flex-col gap-3">
-                                <span className="font-medium">a DM with the link</span>
-                                <textarea
-                                    className="w-full rounded-md border border-gray-200 bg-white p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
-                                    rows={3}
-                                    value={dmWithLink}
-                                    onChange={(e) => setDmWithLink(e.target.value)}
-                                />
-                                <Button
-                                    variant="outline"
-                                    className="w-full mt-1 text-sm font-medium"
-                                >
-                                    + Add A Link
-                                </Button>
-                            </div>
-                        </div>
-                    )}
                 </>
+            )}
+            {/* Step 3: Perform Action - Enhanced UI */}
+            {!!commentType && (
+                <div>
+                    <h3 className="text-lg font-semibold mb-3">They will get</h3>
+                    {/* Opening DM Card */}
+                    <div className="bg-gray-50 border rounded-xl p-4 flex flex-col gap-3 mb-4">
+                        <div className="flex items-center justify-between">
+                            <span className="font-medium">an opening DM</span>
+                            <Switch
+                                checked={dmEnabled}
+                                onCheckedChange={setDmEnabled}
+                                id="dm-switch"
+                            />
+                        </div>
+                        <textarea
+                            className="w-full rounded-md border border-gray-200 bg-white p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+                            rows={3}
+                            value={openingDM}
+                            onChange={(e) => setOpeningDM(e.target.value)}
+                        />
+                        <Input className="w-full text-sm" value="Send me the link" readOnly />
+                        <a
+                            href="#"
+                            className="text-xs text-blue-600 flex items-center gap-1 mt-1 hover:underline"
+                        >
+                            <span className="text-base">ℹ️</span> Why does an Opening DM matter?
+                        </a>
+                    </div>
+                    {/* DM with the link Card */}
+                    <div className="bg-gray-50 border rounded-xl p-4 flex flex-col gap-3">
+                        <span className="font-medium">a DM with the link</span>
+                        <textarea
+                            className="w-full rounded-md border border-gray-200 bg-white p-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary"
+                            rows={3}
+                            value={dmWithLink}
+                            onChange={(e) => setDmWithLink(e.target.value)}
+                        />
+                        <Button variant="outline" className="w-full mt-1 text-sm font-medium">
+                            + Add A Link
+                        </Button>
+                    </div>
+                </div>
             )}
         </div>
     );

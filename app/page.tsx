@@ -5,31 +5,37 @@ import PreviewTabs from '@/components/PreviewTabs';
 import React, { useState } from 'react';
 
 export default function Home() {
-    const [postType, setPostType] = useState(null);
-    const [commentType, setCommentType] = useState(null);
+    const [postType, setPostType] = useState<string | null>(null);
+    const [commentType, setCommentType] = useState<string | null>(null);
     const [dmEnabled, setDmEnabled] = useState(false);
-    // Optionally, you can manage previewTab state if you want to change the preview based on focus
-    const [previewTab, setPreviewTab] = useState<'post' | 'comments' | 'dm'>('post');
+
+    // Derive previewTab from form state
+    let previewTab: 'post' | 'comments' | 'dm' = 'post';
+    if (postType === 'specific') {
+        if (!commentType) {
+            previewTab = 'comments';
+        } else {
+            previewTab = 'dm';
+        }
+    }
 
     return (
-        <div className="flex flex-col w-full h-full p-5">
-            <div className="flex flex-row w-full h-full">
-                <div className="w-1/4 h-full">
-                    <div className="flex flex-col w-full h-full">
-                        <Steps
-                            postType={postType}
-                            setPostType={setPostType}
-                            commentType={commentType}
-                            setCommentType={setCommentType}
-                            dmEnabled={dmEnabled}
-                            setDmEnabled={setDmEnabled}
-                        />
-                    </div>
+        <div className="flex flex-row w-full h-full">
+            <div className="min-w-[250px] w-[25%] flex flex-col overflow-y-scroll">
+                <div className="flex-1">
+                    <Steps
+                        postType={postType}
+                        setPostType={setPostType}
+                        commentType={commentType}
+                        setCommentType={setCommentType}
+                        dmEnabled={dmEnabled}
+                        setDmEnabled={setDmEnabled}
+                    />
                 </div>
-                <div className="w-3/4 h-full flex flex-col items-center justify-start">
-                    <PreviewPhone tab={previewTab} />
-                    <PreviewTabs value={previewTab} onChange={setPreviewTab} />
-                </div>
+            </div>
+            <div className="w-3/4 h-full flex flex-col items-center justify-start bg-gray-200 p-5">
+                <PreviewPhone tab={previewTab} />
+                <PreviewTabs value={previewTab} onChange={() => {}} />
             </div>
         </div>
     );
