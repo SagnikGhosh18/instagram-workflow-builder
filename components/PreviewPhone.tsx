@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronLeft, Ellipsis } from 'lucide-react';
+import CommentOverlay from './CommentOverlay';
 
 interface PreviewPhoneProps {
     tab: 'post' | 'comments' | 'dm';
@@ -35,7 +36,7 @@ const PreviewPhone: React.FC<PreviewPhoneProps> = ({ tab, thumbnails, selectedIm
                     </div>
                 </div>
                 {/* Post image */}
-                <div className="w-full h-48 bg-green-200 flex items-center justify-center">
+                <div className="w-full h-48 bg-green-200 flex items-center justify-center relative">
                     <img
                         src={thumbnails[selectedImageIndex]}
                         alt="Selected Post"
@@ -61,6 +62,7 @@ const PreviewPhone: React.FC<PreviewPhoneProps> = ({ tab, thumbnails, selectedIm
                     </div>
                     <div className="mt-auto" />
                 </div>
+                {tab === 'comments' && <CommentOverlay />}
             </div>
         </div>
     );
