@@ -3,9 +3,11 @@ import { ChevronLeft, Ellipsis } from 'lucide-react';
 
 interface PreviewPhoneProps {
     tab: 'post' | 'comments' | 'dm';
+    thumbnails: string[];
+    selectedImageIndex: number;
 }
 
-const PreviewPhone: React.FC<PreviewPhoneProps> = ({ tab }) => {
+const PreviewPhone: React.FC<PreviewPhoneProps> = ({ tab, thumbnails, selectedImageIndex }) => {
     return (
         <div className="flex flex-col items-center justify-center">
             <div className="relative w-[320px] h-[640px] bg-black rounded-3xl shadow-2xl overflow-hidden border-4 border-gray-900">
@@ -29,14 +31,14 @@ const PreviewPhone: React.FC<PreviewPhoneProps> = ({ tab }) => {
                         <div className="flex flex-col text-[12px] text-white">botspacehq</div>
                     </div>
                     <div>
-                        <Ellipsis color="white" fontSize={6}/>
+                        <Ellipsis color="white" fontSize={6} />
                     </div>
                 </div>
                 {/* Post image */}
                 <div className="w-full h-48 bg-green-200 flex items-center justify-center">
                     <img
-                        src="/public/globe.svg"
-                        alt="WhatsApp 3B Post"
+                        src={thumbnails[selectedImageIndex]}
+                        alt="Selected Post"
                         className="object-cover w-full h-full"
                         style={{ objectPosition: 'top' }}
                     />

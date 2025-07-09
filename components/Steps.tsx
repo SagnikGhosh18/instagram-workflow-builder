@@ -13,6 +13,9 @@ type StepsProps = {
     setCommentType: (v: string) => void;
     dmEnabled: boolean;
     setDmEnabled: (v: boolean) => void;
+    thumbnails: string[];
+    selectedImageIndex: number;
+    setSelectedImageIndex: (idx: number) => void;
 };
 
 const Steps: React.FC<StepsProps> = ({
@@ -22,6 +25,9 @@ const Steps: React.FC<StepsProps> = ({
     setCommentType,
     dmEnabled,
     setDmEnabled,
+    thumbnails,
+    selectedImageIndex,
+    setSelectedImageIndex,
 }) => {
     // State for DM textareas
     const [openingDM, setOpeningDM] = useState(
@@ -49,9 +55,19 @@ const Steps: React.FC<StepsProps> = ({
                             </div>
                             {/* Thumbnails row */}
                             <div className="flex items-center gap-2 pl-6 mt-2">
-                                <div className="w-12 h-16 bg-gray-200 rounded-md" />
-                                <div className="w-12 h-16 bg-gray-200 rounded-md" />
-                                <div className="w-12 h-16 bg-gray-200 rounded-md" />
+                                {thumbnails.map((url, idx) => (
+                                    <img
+                                        key={url}
+                                        src={url}
+                                        alt={`Thumbnail ${idx + 1}`}
+                                        className={`w-12 h-16 rounded-md object-cover cursor-pointer border-2 transition-all ${
+                                            selectedImageIndex === idx
+                                                ? 'border-blue-500 ring-2 ring-blue-300'
+                                                : 'border-transparent'
+                                        }`}
+                                        onClick={() => setSelectedImageIndex(idx)}
+                                    />
+                                ))}
                                 <Button variant="ghost" className="h-8 px-2 text-xs">
                                     Show All
                                 </Button>
